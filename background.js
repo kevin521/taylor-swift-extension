@@ -6,6 +6,21 @@
  */
 var QUERY = 'taylor swift';
 
+
+/**
+ * Checks to see if an object is contained in the array
+ *
+ * @public
+ */
+function contains(a, obj) {
+    for (var i = 0; i < a.length; i++) {
+        if (a[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
 var photoGenerator = {
   /**
    * Flickr URL that will give us lots and lots of whatever we're looking for.
@@ -13,6 +28,7 @@ var photoGenerator = {
    * See http://www.flickr.com/services/api/flickr.photos.search.html for
    * details about the construction of this URL.
    *
+   * <<API_KEY>>
    * @type {string}
    * @private
    */
@@ -63,8 +79,12 @@ var photoGenerator = {
    */
   showPhotos_: function (e) {
     var photos = e.target.responseXML.querySelectorAll('photo');
-    var index = Math.round(Math.random() * photos.length);
+    var index = Math.round(Math.random() * photos.length)-1;
     console.log(index)
+    var badIndices = [0,1,2,4,10,11,16,21,32,34,35]
+
+    while(contains(badIndices,index))
+      index = Math.round(Math.random() * photos.length)-1;
 
     var img = document.createElement('img');
     img.src = this.constructPhotoURL_(photos[index]);
@@ -72,7 +92,7 @@ var photoGenerator = {
 
     this.getTime()
 
-    document.body.style.background = "url('"+ img.src + "') no-repeat fixed top ";
+    document.body.style.background = "url('"+ img.src + "') ";
     document.body.style.backgroundSize = "cover"
   },
 
