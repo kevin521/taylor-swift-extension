@@ -3,7 +3,7 @@
 
   "name": "Taylor Swiftifier",
   "description": "Replace your new tab page with photos of Taylor Swift.",
-  "version": "1.1",
+  "version": "1.2",
   "icons": { 
     "16": "icon16.png",
     "48": "icon48.png",
