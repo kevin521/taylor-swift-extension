@@ -62,7 +62,7 @@ var photoGenerator = {
     if (minutes < 10){
     minutes = "0" + minutes
     }
-    if(hours > 11){
+    if(hours > 12){
       document.getElementById("content").innerHTML = (hours-12 + ":" + minutes)
     } else {
       document.getElementById("content").innerHTML = (hours + ":" + minutes)

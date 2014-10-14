@@ -1,7 +1,10 @@
 function printRandomLyric(jsonFile){
 	var obj = JSON.parse(jsonFile);
 
-  var index = Math.round(Math.random() * obj.lyrics.length) + 1;
+	var index = -1
+
+	while (index < 0 || index > obj.lyrics.length)
+  	index = Math.round(Math.random() * obj.lyrics.length) - 1;
 
   document.getElementById("lyric").innerHTML = obj.lyrics[index]
 
